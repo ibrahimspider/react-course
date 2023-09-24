@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// import the library
+import { library } from "@fortawesome/fontawesome-svg-core";
 
-function App() {
+// import your icons
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+
+import Card from "./Components/Card";
+import { data } from "./data";
+export default function App() {
+  const dataShow = data.map((item, index) => (
+    <Card
+      key={index}
+      img={item.img}
+      title={item.title}
+      desc={item.desc}
+      review={item.review}
+      price={item.price}
+    />
+  ));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-slate-50 font-Roboto">
+      <div className="max-w-7xl m-auto px-4">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-6 py-4">
+          {dataShow}
+        </div>
+      </div>
     </div>
   );
 }
-
-export default App;
+library.add(fab, fas, far);
